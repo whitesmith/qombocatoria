@@ -28,7 +28,7 @@ app.post('/slack/message_action/', function(request, response) {
 	console.log('User:', json['user']['id'])
 	console.log('Response URL:', json['response_url'])
 
-	var answer = json['actions']['value']
+	var answer = json['actions'][0]['value']
 	var message = 'Shame on you!'
 
 	if (answer.toLowerCase() == 'yes') {
