@@ -1,6 +1,6 @@
 {
   "name": "Qombocatoria",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "Qombocatoria from Whitesmith",
   "engines": {
     "node": "5.9.1"
