@@ -28,12 +28,22 @@ app.post('/slack/message_action/', function(request, response) {
 	console.log('User:', json['user']['id'])
 	console.log('Response URL:', json['response_url'])
 
-	requester({ url: json['response_url'], method: 'PUT', json: { text: 'Estás qombocado!' }})
+	var answer = json['actions']['value']
+	var message = 'Shame on you!'
+
+	if (answer.toLowerCase() == 'yes') {
+		message = 'Estás qombocado!'
+	}
+	else if (answer.toLowerCase() == 'maybe') {
+		message = 'I will hunt you until I get a final answer.'
+	}
+
+	requester({ url: json['response_url'], method: 'PUT', json: { text: message }})
 	.on('response', function(response) {
     console.log('Response code', response.statusCode)
   })
 
-  response.sendStatus(200)
+  response.status(200).send('Analysing your response');
 });
 
 app.listen(app.get('port'), function() {
