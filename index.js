@@ -28,11 +28,12 @@ app.post('/slack/message_action/', function(request, response) {
 	console.log('User:', json['user']['id'])
 	console.log('Response URL:', json['response_url'])
 
-	requester.put(json['response_url'], { text: 'Estás qombocado!' }).on('response', function(response) {
+	requester({ url: json['response_url'], method: 'PUT', json: { text: 'Estás qombocado!' }})
+	.on('response', function(response) {
     console.log('Response code', response.statusCode)
   })
 
-	response.sendStatus(200)
+  response.sendStatus(200)
 });
 
 app.listen(app.get('port'), function() {
