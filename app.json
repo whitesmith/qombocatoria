@@ -1,0 +1,8 @@
+{
+  "name": "Qombocatoria",
+  "description": "Qombocatoria from Whitesmith",
+  "repository": "https://github.com/whitesmith/qombocatoria",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "static"],
+  "image": "heroku/nodejs"
+}
