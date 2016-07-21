@@ -13,8 +13,9 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.get('/slack/message_action/', function(request, response) {
-	console.log('SLACK action')
+app.post('/slack/message_action/', function(request, response) {
+	console.log('Request:', request)
+	console.log('Response:', response)
 	response.sendStatus(200)
 });
 
