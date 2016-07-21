@@ -4,7 +4,9 @@ var app = express();
 
 app.set('port', (process.env.PORT || 5000));
 
+app.use(bodyParser.json());
 app.use(bodyParser.raw());
+
 app.use(express.static(__dirname + '/public'));
 
 // views is directory for all template files
@@ -17,7 +19,7 @@ app.get('/', function(request, response) {
 
 app.post('/slack/message_action/', function(request, response) {
 	console.log('Request:', request.body)
-	console.log('Response:', response.body)
+	console.log('Response:', response.url)
 	response.sendStatus(200)
 });
 
