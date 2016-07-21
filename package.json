@@ -10,8 +10,8 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "ejs": "2.4.1",
-    "express": "4.13.3"
+    "ejs": "^2.4.2",
+    "express": "^4.14.0"
   },
   "repository": {
     "type": "git",
