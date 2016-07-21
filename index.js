@@ -22,7 +22,7 @@ app.get('/', function(request, response) {
 
 app.post('/slack/message_action/', function(request, response) {
 	console.log('Request:', request.body)
-	console.log('Data:', request.body['payload']['actions'])
+	console.log('Data:', request.body['payload'])
 	response.sendStatus(200)
 });
 
