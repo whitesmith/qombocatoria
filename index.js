@@ -1,7 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var multer = require('multer');
-var data = multer(); // for parsing multipart/form-data
+var requester = require('request');
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
@@ -22,8 +21,17 @@ app.get('/', function(request, response) {
 
 app.post('/slack/message_action/', function(request, response) {
 	console.log('Request:', request.body)
+
 	var json = JSON.parse(request.body['payload']);
-	console.log('Payload data:', json)
+	console.log('Payload:', json)
+	console.log('Answer:', json['actions']['value'])
+	console.log('User:', json['user']['id'])
+	console.log('Response URL:', json['response_url'])
+
+	requester.put(json['response_url'], { text: 'Estás qombocado!' }).on('response', function(response) {
+    console.log('Response code', response.statusCode)
+  })
+
 	response.sendStatus(200)
 });
 
