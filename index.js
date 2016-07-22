@@ -80,7 +80,7 @@ app.get('/oauth', function(request, response) {
   }).form(options);
 });
 
-app.post('/slack/bot/test/', function(request, response) {
+app.get('/slack/bot/test/', function(request, response) {
 	redis.hget("Auth", "access_token", function(error, access_token) {
 		if (access_token == null) {
 			response.status(403).send('Not authenticated');
@@ -99,7 +99,7 @@ app.post('/slack/bot/test/', function(request, response) {
 
 		  console.log('Test bot message:', options)
 
-		  requester.post('https://slack.com/api/chat.postMessage', function(error, botResponse, body) {
+		  requester.get('https://slack.com/api/chat.postMessage', function(error, botResponse, body) {
 		    if (!error && botResponse.statusCode == 200) {
 		      response.status(200).send('Test message sent successfully');
 		    }
