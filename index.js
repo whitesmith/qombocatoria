@@ -7,8 +7,10 @@ app.set('port', (process.env.PORT || 5000));
 app.set('ip', (process.env.IP || '127.0.0.1'));
 
 // Slack
-app.set('slackClientId', (process.env.SLACK_APP_CLIENT_ID || "empty"));
-app.set('slackClientSecret', (process.env.SLACK_APP_CLIENT_SECRET || "empty"));
+app.set('slackClientId', (process.env.SLACK_APP_CLIENT_ID || 'empty'));
+app.set('slackClientSecret', (process.env.SLACK_APP_CLIENT_SECRET || 'empty'));
+// Auth
+app.set('oauthRedirectURL', (process.env.OAUTH_REDIRECT_URL || '127.0.0.1:' + app.get('port') + '/oauth'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,7 +34,7 @@ app.get('/login', function(request, response) {
 	  '?client_id=' + app.get('slackClientId') +
 	  '&scope=bot' +
 	  '&state=qombocatoria' +
-	  '&redirect_uri=' + 'https://' + app.get('ip') +':'+ app.get('port') + '/oauth';
+	  '&redirect_uri=' + app.get('oauthRedirectURL');
   console.log('Login redirect to:', url)
 	response.redirect(url);
 });
