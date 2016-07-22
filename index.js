@@ -227,6 +227,7 @@ app.get('/slack/bot/call-players/', function(request, response) {
 app.get('/reset/', function(request, response) {
 	redis.hkeys('Players', function (err, replies) {
     replies.forEach(function(reply, i) {
+			console.log('Delete player', reply)
     	redis.hdel('Players', reply)
     });
     response.sendStatus(200);
@@ -235,6 +236,7 @@ app.get('/reset/', function(request, response) {
 
 app.get('/players/', function(request, response) {
 	redis.hkeys('Players', function (err, replies) {
+		console.log('Players', replies)
     response.json(replies)
   });
 })
