@@ -169,14 +169,56 @@ app.get('/slack/bot/call-players/', function(request, response) {
 
 			console.log('Bot test message', url);
 
-		  requester.get(url, function(error, botResponse, body) {
-		    if (!error && botResponse.statusCode == 200) {
-		      response.status(200).send('Test message sent successfully');
-		    }
-		    else {
-		      response.status(botResponse.statusCode).send(error);
-		    }
-		  })
+			// #liga-dos-ultimos members :D
+			var members = [
+        "U024Q1S1M",
+        "U024Q2F43",
+        "U024Q2F63",
+        "U024Q2F6F",
+        "U024Q2F7B",
+        "U024Q2F7V",
+        "U024Q2F8D",
+        "U024Q2F8Z",
+        "U024Q2F9K",
+        "U024Q2FA7",
+        "U024Q2FBR",
+        "U024Q2FCF",
+        "U024Q2FFF",
+        "U024Q2FH1",
+        "U024Q2FHR",
+        "U024Q4QBS",
+        "U024QAA7F",
+        "U0266AVE8",
+        "U029GQYCG",
+        "U036D736N",
+        "U039V0KSC",
+        "U03DW219D",
+        "U03QEKVHT",
+        "U076825QQ",
+        "U07LV3189",
+        "U07LW468P",
+        "U07MXLCEN",
+        "U07PH0WD8",
+        "U09NYARK4",
+        "U1DQ792A3",
+        "U1E7P2RTM",
+        "U1KAAKJLA",
+        "U1MHD199A",
+        "U1Q9NUR8D",
+        "U1TS58WG5"
+      ]
+
+      for (member in members) {
+			  requester.get(url, function(error, botResponse, body) {
+			    if (!error && botResponse.statusCode == 200) {
+			      console.log('Success for', member);
+			    }
+			    else {
+			      console.log('Failed request for', member, error);
+			    }
+			  })    	
+      }
+      response.status(200).send('Requests were sent');
 		}
 	});
 })
