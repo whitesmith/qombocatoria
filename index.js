@@ -100,6 +100,9 @@ app.get('/slack/bot/test/', function(request, response) {
 		  console.log('Test bot message:', options)
 
 		  requester.get('https://slack.com/api/chat.postMessage', function(error, botResponse, body) {
+
+        console.log('Bot response:', error, botResponse, body)
+
 		    if (!error && botResponse.statusCode == 200) {
 		      response.status(200).send('Test message sent successfully');
 		    }
