@@ -50,13 +50,13 @@ app.get('/oauth', function(request, response) {
   };
 
 	console.log('Request access token with code:', code)
-  request.post('https://slack.com/api/oauth.access', function(error, accessResponse, body) {
+  requester.post('https://slack.com/api/oauth.access', function(error, accessResponse, body) {
       if (!error && accessResponse.statusCode == 200) {
           var json = JSON.parse(body);
           if (json.ok) {
               var auth = json;
               console.log('Oauth testing:', auth)
-              request.post('https://slack.com/api/auth.test', function(error, authTestResponse, body) {
+              requester.post('https://slack.com/api/auth.test', function(error, authTestResponse, body) {
                 if (!error && accessResponse.statusCode == 200) {
                   // TODO: store `auth.access_token`
                   response.status(200).send('Authenticated');
