@@ -97,6 +97,8 @@ app.post('/slack/bot/test/', function(request, response) {
 				as_user: 'B1TQJMBEX' //TODO: Bot user
 			}
 
+		  console.log('Test bot message:', options)
+
 		  requester.post('https://slack.com/api/chat.postMessage', function(error, botResponse, body) {
 		    if (!error && botResponse.statusCode == 200) {
 		      response.status(200).send('Test message sent successfully');
