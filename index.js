@@ -4,6 +4,11 @@ var requester = require('request');
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
+app.set('ip', (process.env.IP || '127.0.0.1'));
+
+// Slack
+app.set('slackClientId', (process.env.SLACK_APP_CLIENT_ID || "empty"));
+app.set('slackClientSecret', (process.env.SLACK_APP_CLIENT_SECRET || "empty"));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -17,6 +22,57 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
   response.render('pages/index');
+});
+
+
+// API
+
+app.get('/login', function(request, response) {
+	var url = 'https://slack.com/oauth/authorize' +
+	  '?client_id=' + app.get('slackClientId') +
+	  '&scope=bot' +
+	  '&state=qombocatoria' +
+	  '&redirect_uri=' + 'https://' + app.get('ip') +':'+ app.get('port') + '/oauth';
+  console.log('Login redirect to:', url)
+	response.redirect(url);
+});
+
+app.get('/oauth', function(request, response) {
+	var code = request.query.code;
+
+  var options = {
+    client_id: app.get('slackClientId'),
+    client_secret: app.get('slackClientSecret'),
+    code: code
+  };
+
+	console.log('Request access token with code:', code)
+  request.post('https://slack.com/api/oauth.access', function(error, accessResponse, body) {
+      if (!error && accessResponse.statusCode == 200) {
+          var json = JSON.parse(body);
+          if (json.ok) {
+              var auth = json;
+              console.log('Oauth testing:', auth)
+              request.post('https://slack.com/api/auth.test', function(error, authTestResponse, body) {
+                if (!error && accessResponse.statusCode == 200) {
+                  // TODO: store `auth.access_token`
+                  response.status(200).send('Authenticated');
+                }
+                else {
+                  response.status(500).send(error);
+                }
+              }).form({token: auth.access_token});
+          }
+          else {
+              console.log('Oauth JSON error:', json.error, json)
+              response.status(500).send(json.error);
+          }
+      }
+      else {
+          console.log('Oauth error:', error)
+          response.status(500).send(error);
+      }
+  }).form(options);
 });
 
 app.post('/slack/message_action/', function(request, response) {
