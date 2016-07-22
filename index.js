@@ -96,6 +96,8 @@ app.get('/slack/bot/test/', function(request, response) {
 			  '&text=' + encodeURIComponent('Test from backend!') +
 			  '&as_user=' + 'B1TQJMBEX'; //TODO: Bot user
 
+			console.log('Bot test message', url);
+
 		  requester.get(url, function(error, botResponse, body) {
 		    if (!error && botResponse.statusCode == 200) {
 		      response.status(200).send('Test message sent successfully');
