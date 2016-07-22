@@ -90,7 +90,7 @@ app.post('/slack/bot/test/', function(request, response) {
 		}
 		else {
 			var options = {
-				access_token: access_token,
+				token: access_token,
 				channel: 'C1TPEHDEX', //TODO: Qombocatoria
 				pretty: 1,
 				text: 'Test message sent from backend!',
@@ -121,7 +121,7 @@ app.post('/slack/message_action/', function(request, response) {
 	var answer = json['actions'][0]['value']
 	var message = 'Shame on you!'
 
-	if (answer.toLowerCase() == 'yes') {
+	if (answer.toLowerCase() == 'yes' || answer.toLowerCase() == 'sure') {
 		message = 'Estás qombocado!'
 	}
 	else if (answer.toLowerCase() == 'maybe') {
