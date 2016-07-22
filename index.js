@@ -27,6 +27,14 @@ app.get('/', function (request, response) {
     response.render('pages/index');
 });
 
+app.get('/players', function (request, response) {
+    redis.hvals('Players', function (err, values) {
+        response.render('pages/players', {
+            players: values
+        })
+    });
+});
+
 
 // API
 

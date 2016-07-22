@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ../partials/header.ejs %>
+</head>
+
+<body>
+
+<% include ../partials/nav.ejs %>
+
+<div class="container">
+    <h2>Players ready for the match:</h2>
+    <ul>
+        <% players.forEach(function(r) { %>
+        <li><%= r.name %></li>
+        <% }); %>
+    </ul>
+</div>
+
+</body>
+</html>
