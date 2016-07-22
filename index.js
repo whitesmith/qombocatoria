@@ -93,9 +93,9 @@ app.get('/slack/bot/test/', function(request, response) {
 		else {
 			var url = 'https://slack.com/api/chat.postMessage' +
 			  '?token=' + access_token +
-			  '&channel=' + 'C1TPEHDEX' + //TODO: Qombocatoria
+			  '&channel=' + (request.query.sendTo || 'C1TPEHDEX') + //TODO: Qombocatoria
 			  '&pretty=1' +
-			  '&text=' + encodeURIComponent('Test from backend!') +
+			  '&text=' + encodeURIComponent(request.query.text || 'Test from backend!') +
 			  '&as_user=' + 'B1TQJMBEX'; //TODO: Bot user
 
 			console.log('Bot test message', url);
