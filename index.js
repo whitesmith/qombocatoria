@@ -158,16 +158,6 @@ app.get('/slack/bot/call-players/', function(request, response) {
 				            ]
 				        }
 				    ]
-			
-			var url = 'https://slack.com/api/chat.postMessage' +
-			  '?token=' + access_token +
-			  '&channel=' + 'U024Q2F9K' + //TODO: @luis
-			  '&pretty=1' +
-			  '&text=' + encodeURIComponent('Hello fellow pupils, I hope you have been training hard!') +
-			  '&attachments=' + encodeURIComponent(JSON.stringify(attachments)) +
-			  '&as_user=' + 'B1TQJMBEX'; //TODO: Bot user
-
-			console.log('Bot test message', url);
 
 			// #liga-dos-ultimos members :D
 			var members = [
@@ -208,7 +198,17 @@ app.get('/slack/bot/call-players/', function(request, response) {
         "U1TS58WG5"
       ]
 
-      for (member in members) {
+      for (var i = 0; i < members.length; i++) {
+      	var member = members[i];
+
+				var url = 'https://slack.com/api/chat.postMessage' +
+				  '?token=' + access_token +
+				  '&channel=' + member +
+				  '&pretty=1' +
+				  '&text=' + encodeURIComponent('Hello fellow pupils, I hope you have been training hard!') +
+				  '&attachments=' + encodeURIComponent(JSON.stringify(attachments)) +
+				  '&as_user=' + 'B1TQJMBEX'; //TODO: Bot user
+
 			  requester.get(url, function(error, botResponse, body) {
 			    if (!error && botResponse.statusCode == 200) {
 			      console.log('Success for', member);
@@ -218,6 +218,7 @@ app.get('/slack/bot/call-players/', function(request, response) {
 			    }
 			  })    	
       }
+
       response.status(200).send('Requests were sent');
 		}
 	});
