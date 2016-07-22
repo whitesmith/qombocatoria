@@ -81,10 +81,10 @@ app.get('/oauth', function(request, response) {
 
 app.post('/slack/bot/test/', function(request, response) {
 	client.hget("Auth", "access_token", function(error, access_token) {
-		if access_token == null {
+		if (access_token == null) {
 			response.status(403).send('Not authenticated');
 		}
-		else if access_token == undefined {
+		else if (access_token == undefined) {
 			response.sendStatus(500);
 		}
 		else {
@@ -106,7 +106,7 @@ app.post('/slack/bot/test/', function(request, response) {
 		  }).form(options);
 		}
 	});
-}
+})
 
 app.post('/slack/message_action/', function(request, response) {
 	console.log('Request:', request.body)
