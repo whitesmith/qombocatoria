@@ -164,7 +164,7 @@ app.get('/slack/bot/call-players/', function(request, response) {
 			  '&channel=' + 'U024Q2F9K' + //TODO: @luis
 			  '&pretty=1' +
 			  '&text=' + encodeURIComponent('Hello fellow pupils, I hope you have been training hard!') +
-			  '&attachments=' + encodeURIComponent(JSON.stringfy(attachments)) +
+			  '&attachments=' + encodeURIComponent(JSON.stringify(attachments)) +
 			  '&as_user=' + 'B1TQJMBEX'; //TODO: Bot user
 
 			console.log('Bot test message', url);
