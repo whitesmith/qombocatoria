@@ -49,7 +49,7 @@ app.get('/oauth', function(request, response) {
     code: code
   };
 
-	console.log('Request access token with code:', code)
+	console.log('Request access token with options:', options)
   requester.post('https://slack.com/api/oauth.access', function(error, accessResponse, body) {
       if (!error && accessResponse.statusCode == 200) {
           var json = JSON.parse(body);
