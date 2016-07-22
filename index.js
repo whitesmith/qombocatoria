@@ -112,6 +112,75 @@ app.get('/slack/bot/test/', function(request, response) {
 	});
 })
 
+app.get('/slack/bot/call-players/', function(request, response) {
+	redis.hget("Auth", "bot_access_token", function(error, access_token) {
+		if (access_token == null) {
+			response.status(403).send('Not authenticated');
+		}
+		else if (access_token == undefined) {
+			response.sendStatus(500);
+		}
+		else {
+			var attachments = [
+				        {
+				            "text": "Will you play in the next game? ",
+				            "fallback": "You are unable to choose a game",
+				            "callback_id": "qombocatoria",
+				            "color": "#3AA3E3",
+				            "attachment_type": "default",
+				            "actions": [
+				                {
+				                    "name": "yes",
+				                    "text": "Yes",
+				                    "type": "button",
+														"style": "primary",
+				                    "value": "yes"
+				                },
+				                {
+				                    "name": "maybe",
+				                    "text": "Maybe",
+				                    "type": "button",
+				                    "value": "maybe"
+				                },
+				                {
+				                    "name": "no",
+				                    "text": "No",
+				                    "style": "danger",
+				                    "type": "button",
+				                    "value": "no",
+				                    "confirm": {
+				                        "title": "Are you sure?",
+				                        "text": "YOLO!",
+				                        "ok_text": "Yes",
+				                        "dismiss_text": "No"
+				                    }
+				                }
+				            ]
+				        }
+				    ]
+			
+			var url = 'https://slack.com/api/chat.postMessage' +
+			  '?token=' + access_token +
+			  '&channel=' + 'U024Q2F9K' + //TODO: @luis
+			  '&pretty=1' +
+			  '&text=' + encodeURIComponent('Hello fellow pupils, I hope you have been training hard!') +
+			  '&attachments=' + encodeURIComponent(JSON.stringfy(attachments)) +
+			  '&as_user=' + 'B1TQJMBEX'; //TODO: Bot user
+
+			console.log('Bot test message', url);
+
+		  requester.get(url, function(error, botResponse, body) {
+		    if (!error && botResponse.statusCode == 200) {
+		      response.status(200).send('Test message sent successfully');
+		    }
+		    else {
+		      response.status(botResponse.statusCode).send(error);
+		    }
+		  })
+		}
+	});
+})
+
 app.post('/slack/message_action/', function(request, response) {
 	console.log('Request:', request.body)
 
