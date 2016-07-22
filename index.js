@@ -224,12 +224,27 @@ app.get('/slack/bot/call-players/', function(request, response) {
 	});
 })
 
+app.get('/reset/', function(request, response) {
+	redis.hkeys('Players', function (err, replies) {
+    replies.forEach(function(reply, i) {
+    	redis.hdel('Players', reply)
+    });
+    response.sendStatus(200);
+  });
+})
+
+app.get('/players/', function(request, response) {
+	redis.hkeys('Players', function (err, replies) {
+    response.json(replies)
+  });
+})
+
 app.post('/slack/message_action/', function(request, response) {
 	console.log('Request:', request.body)
 
 	var json = JSON.parse(request.body['payload']);
 	console.log('Payload:', json)
-	console.log('Answer:', json['actions']['value'])
+	console.log('Answer:', json['actions'][0]['value'])
 	console.log('User:', json['user']['id'])
 	console.log('Response URL:', json['response_url'])
 
@@ -238,6 +253,7 @@ app.post('/slack/message_action/', function(request, response) {
 
 	if (answer.toLowerCase() == 'yes' || answer.toLowerCase() == 'sure') {
 		message = 'Estás qombocado!'
+		redis.hset("Players", json.user.id, json.user.name);
 	}
 	else if (answer.toLowerCase() == 'maybe') {
 		message = 'I will hunt you until I get a final answer.'
