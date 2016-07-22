@@ -89,27 +89,21 @@ app.get('/slack/bot/test/', function(request, response) {
 			response.sendStatus(500);
 		}
 		else {
-			var options = {
-				token: access_token,
-				channel: 'C1TPEHDEX', //TODO: Qombocatoria
-				pretty: 1,
-				text: 'Test message sent from backend!',
-				as_user: 'B1TQJMBEX' //TODO: Bot user
-			}
+			var url = 'https://slack.com/api/chat.postMessage' +
+			  '?token=' + access_token +
+			  '&channel=' + 'C1TPEHDEX' + //TODO: Qombocatoria
+			  '&pretty=1' +
+			  '&text=' + encodeURIComponent('Test from backend!') +
+			  '&as_user=' + 'B1TQJMBEX'; //TODO: Bot user
 
-		  console.log('Test bot message:', options)
-
-		  requester.get('https://slack.com/api/chat.postMessage', function(error, botResponse, body) {
-
-        console.log('Bot response:', error, botResponse, body)
-
+		  requester.get(url, function(error, botResponse, body) {
 		    if (!error && botResponse.statusCode == 200) {
 		      response.status(200).send('Test message sent successfully');
 		    }
 		    else {
-		      response.status(500).send(error);
+		      response.status(botResponse.statusCode).send(error);
 		    }
-		  }).form(options);
+		  })
 		}
 	});
 })
