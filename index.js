@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var requester = require('request');
 var app = express();
-var redis = require('redis').createClient(process.env.REDIS_URL);
+var redis = require('redis').createClient(process.env.REDIS_URL || 'redis://127.0.0.1:6379');
 
 app.set('port', (process.env.PORT || 5000));
 app.set('ip', (process.env.IP || '127.0.0.1'));
@@ -11,7 +11,7 @@ app.set('ip', (process.env.IP || '127.0.0.1'));
 app.set('slackClientId', (process.env.SLACK_APP_CLIENT_ID || 'empty'));
 app.set('slackClientSecret', (process.env.SLACK_APP_CLIENT_SECRET || 'empty'));
 // Auth
-app.set('oauthRedirectURL', (process.env.OAUTH_REDIRECT_URL || '127.0.0.1:' + app.get('port') + '/oauth'));
+app.set('oauthRedirectURL', (process.env.OAUTH_REDIRECT_URL || 'http://127.0.0.1:' + app.get('port') + '/oauth'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
