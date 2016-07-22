@@ -58,7 +58,8 @@ app.get('/oauth', function(request, response) {
               console.log('Oauth testing:', auth)
               requester.post('https://slack.com/api/auth.test', function(error, authTestResponse, body) {
                 if (!error && accessResponse.statusCode == 200) {
-                  // TODO: store `auth.access_token`
+                  // Store `auth.access_token`
+                  client.hset("Auth", "access_token", auth.access_token);
                   response.status(200).send('Authenticated');
                 }
                 else {
@@ -77,6 +78,35 @@ app.get('/oauth', function(request, response) {
       }
   }).form(options);
 });
+
+app.post('/slack/bot/test/', function(request, response) {
+	client.hget("Auth", "access_token", function(error, access_token) {
+		if access_token == null {
+			response.status(403).send('Not authenticated');
+		}
+		else if access_token == undefined {
+			response.sendStatus(500);
+		}
+		else {
+			var options = {
+				access_token: access_token,
+				channel: 'C1TPEHDEX', //TODO: Qombocatoria
+				pretty: 1,
+				text: 'Test message sent from backend!',
+				as_user: 'B1TQJMBEX' //TODO: Bot user
+			}
+
+		  requester.post('https://slack.com/api/chat.postMessage', function(error, botResponse, body) {
+		    if (!error && botResponse.statusCode == 200) {
+		      response.status(200).send('Test message sent successfully');
+		    }
+		    else {
+		      response.status(500).send(error);
+		    }
+		  }).form(options);
+		}
+	});
+}
 
 app.post('/slack/message_action/', function(request, response) {
 	console.log('Request:', request.body)
