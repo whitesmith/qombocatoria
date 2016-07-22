@@ -61,6 +61,8 @@ app.get('/oauth', function(request, response) {
                 if (!error && accessResponse.statusCode == 200) {
                   // Store `auth.access_token`
                   redis.hset("Auth", "access_token", auth.access_token);
+                  redis.hset("Auth", "bot_user_id", auth.bot.bot_user_id);
+                  redis.hset("Auth", "bot_access_token", auth.bot.bot_access_token);
                   response.status(200).send('Authenticated');
                 }
                 else {
@@ -81,7 +83,7 @@ app.get('/oauth', function(request, response) {
 });
 
 app.get('/slack/bot/test/', function(request, response) {
-	redis.hget("Auth", "access_token", function(error, access_token) {
+	redis.hget("Auth", "bot_access_token", function(error, access_token) {
 		if (access_token == null) {
 			response.status(403).send('Not authenticated');
 		}
