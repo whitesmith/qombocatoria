@@ -46,7 +46,8 @@ app.get('/oauth', function(request, response) {
   var options = {
     client_id: app.get('slackClientId'),
     client_secret: app.get('slackClientSecret'),
-    code: code
+    code: code,
+    redirect_uri: app.get('oauthRedirectURL')
   };
 
 	console.log('Request access token with options:', options)
@@ -59,7 +60,7 @@ app.get('/oauth', function(request, response) {
               requester.post('https://slack.com/api/auth.test', function(error, authTestResponse, body) {
                 if (!error && accessResponse.statusCode == 200) {
                   // Store `auth.access_token`
-                  client.hset("Auth", "access_token", auth.access_token);
+                  redis.hset("Auth", "access_token", auth.access_token);
                   response.status(200).send('Authenticated');
                 }
                 else {
