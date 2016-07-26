@@ -1,348 +1,441 @@
-            @import url('normalize.css');
-            html {
-                margin: 0;
-                padding: 0;
-            }
-            
-            * {
-                box-sizing: border-box;
-            }
-            
-            body {
-                background-color: black;
-                overflow-x: hidden;
-                background-image: url(qomb-01.png);
-                background-size: cover;
-            }
-            
-            .rw-wrapper {
-                width: 80%;
-                position: relative;
-                padding: 10px;
-            }
-            
-            .rw-sentence {
-                margin: 0;
-                text-align: left;
-            }
-            
-            .rw-sentence span {
-                color: white;
-                font-size: 2.2vw;
-                font-weight: normal;
-            }
-            
-            .rw-words {
-                display: inline;
-                text-indent: 10px;
-            }
-            
-            .rw-words-1 span {
-                position: absolute;
-                margin-top: 1vh;
-                opacity: 0;
-                overflow: hidden;
-                color: #3dad4a;
-                -webkit-animation: rotateWord 18s linear infinite 0s;
-                -ms-animation: rotateWord 18s linear infinite 0s;
-                animation: rotateWord 18s linear infinite 0s;
-            }
-            
-            .rw-words-1 span:nth-child(2) {
-                -webkit-animation-delay: 3s;
-                -ms-animation-delay: 3s;
-                animation-delay: 3s;
-                color: #d08c1f;
-                margin-top: 1vh;
-            }
-            
-            .rw-words-1 span:nth-child(3) {
-                -webkit-animation-delay: 6s;
-                -ms-animation-delay: 6s;
-                animation-delay: 6s;
-                color: #ff063f;
-                margin-top: 1vh;
-            }
-            
-            .rw-words-1 span:nth-child(4) {
-                -webkit-animation-delay: 9s;
-                -ms-animation-delay: 9s;
-                animation-delay: 9s;
-                color: #C0C0C0;
-            }
-            
-            .rw-words-1 span:nth-child(5) {
-                -webkit-animation-delay: 12s;
-                -ms-animation-delay: 12s;
-                animation-delay: 12s;
-                color: #197111;
-                margin-top: 1vh;
-            }
-            
-            .rw-words-1 span:nth-child(6) {
-                -webkit-animation-delay: 15s;
-                -ms-animation-delay: 15s;
-                animation-delay: 15s;
-                color: #3fabb4;
-                margin-top: 1vh;
-            }
-            
-            @-webkit-keyframes rotateWord {
-                0% {
-                    opacity: 0;
-                }
-                2% {
-                    opacity: 0;
-                    -webkit-transform: translateY(-30px);
-                }
-                5% {
-                    opacity: 1;
-                    -webkit-transform: translateY(0px);
-                }
-                17% {
-                    opacity: 1;
-                    -webkit-transform: translateY(0px);
-                }
-                20% {
-                    opacity: 0;
-                    -webkit-transform: translateY(30px);
-                }
-                80% {
-                    opacity: 0;
-                }
-                100% {
-                    opacity: 0;
-                }
-            }
-            
-            @-ms-keyframes rotateWord {
-                0% {
-                    opacity: 0;
-                }
-                2% {
-                    opacity: 0;
-                    -ms-transform: translateY(-30px);
-                }
-                5% {
-                    opacity: 1;
-                    -ms-transform: translateY(0px);
-                }
-                17% {
-                    opacity: 1;
-                    -ms-transform: translateY(0px);
-                }
-                20% {
-                    opacity: 0;
-                    -ms-transform: translateY(30px);
-                }
-                80% {
-                    opacity: 0;
-                }
-                100% {
-                    opacity: 0;
-                }
-            }
-            
-            @keyframes rotateWord {
-                0% {
-                    opacity: 0;
-                }
-                2% {
-                    opacity: 0;
-                    -webkit-transform: translateY(-30px);
-                    transform: translateY(-30px);
-                }
-                5% {
-                    opacity: 1;
-                    -webkit-transform: translateY(0px);
-                    transform: translateY(0px);
-                }
-                17% {
-                    opacity: 1;
-                    -webkit-transform: translateY(0px);
-                    transform: translateY(0px);
-                }
-                20% {
-                    opacity: 0;
-                    -webkit-transform: translateY(30px);
-                    transform: translateY(30px);
-                }
-                80% {
-                    opacity: 0;
-                }
-                100% {
-                    opacity: 0;
-                }
-            }
-            
-            @media screen and (max-width: 768px) {
-                .rw-sentence {
-                    font-size: 18px;
-                }
-            }
-            
-            @media screen and (max-width: 320px) {
-                .rw-sentence {
-                    font-size: 9px;
-                }
-            }
-            /*
-
-----------------DESIGN---------------*/
-            
-            @font-face {
-                font-family: MainFont;
-                src: url(AdventPro-Bold.ttf);
-                font-weight: bold;
-            }
-            
-            @font-face {
-                font-family: TextFont;
-                src: url(Roboto-Light.ttf);
-                font-weight: light;
-            }
-            
-            .m_c,
-            mc2 {
-                width: 90vw;
-                height: auto;
-            }
-            
-            .main_text {
-                margin-top: -5vh;
-                font-size: 2.8vw;
-                margin-left: .7vw;
-                font-family: TextFont;
-                color: rgb(255, 255, 255);
-            }
-            
-            .main_title {
-                font-size: 5vw;
-                font-family: MainFont;
-                color: #e3cd22;
-            }
-            
-            .mc2 {
-                margin-top: 6vh;
-            }
-            
-            .main_title2 {
-                font-size: 1.5vw;
-                font-family: MainFont;
-                color: #e3cd22;
-            }
-            
-            .main_text2 {
-                margin-top: -1vh;
-                font-size: 1vw;
-                margin-left: .7vw;
-                font-family: TextFont;
-                color: rgb(255, 255, 255);
-            }
-            
-            main {
-                font-family: TextFont;
-                font-size: 2vw;
-                width: 960px;
-                max-width: 100%;
-                margin: 0px auto;
-                height: auto;
-            }
-            
-            .but {
-                margin-left: 70%;
-            }
-            /* Large Devices, Wide Screens */
-            
-            @media only screen and (max-width: 1200px) {
-                main {
-                    width: 1170px;
-                    max-width: 100%;
-                }
-            }
-            /* Medium Devices, Desktops */
-            
-            @media only screen and (max-width: 992px) {
-                main {
-                    width: 450px;
-                    max-width: 100%;
-                    margin: 0px auto;
-                    height: auto;
-                }
-                .main_text {
-                    margin-top: -1vh;
-                    font-size: 8.8vw;
-                    margin-left: .7vw;
-                }
-                .main_title {
-                    font-size: 10vw;
-                }
-                .main_title2 {
-                    font-size: 6.5vw;
-                    font-family: MainFont;
-                    color: #e3cd22;
-                }
-                .main_text2 {
-                    font-size: 6vw;
-                    margin-left: .7vw;
-                }
-                main {
-                    font-size: 6vw;
-                }
-                .rw-sentence span {
-                    font-size: 7vw;
-                }
-            }
-            /* Small Devices, Tablets */
-            
-            @media only screen and (max-width: 768px) {
-                main {
-                    width: 748px;
-                    max-width: 100%;
-                    margin: 0px auto;
-                    height: auto;
-                }
-            }
-            /* Extra Small Devices, Phones */
-            
-            @media only screen and (max-width: 480px) {
-                main {
-                    width: 450px;
-                    max-width: 100%;
-                    margin: 0px auto;
-                    height: auto;
-                }
-                .main_text {
-                    margin-top: -1vh;
-                    font-size: 6.8vw;
-                    margin-left: .7vw;
-                }
-                .main_title {
-                    font-size: 8vw;
-                }
-                .main_title2 {
-                    font-size: 4.5vw;
-                    font-family: MainFont;
-                    color: #e3cd22;
-                }
-                .main_text2 {
-                    font-size: 4vw;
-                    margin-left: .7vw;
-                }
-                main {
-                    font-size: 4vw;
-                }
-                .rw-sentence span {
-                    font-size: 5vw;
-                }
-            }
-            /* Custom, iPhone Retina */
-            
-            @media only screen and (max-width: 320px) {
-                main {
-                    width: 280px;
-                    max-width: 100%;
-                    margin: 0px auto;
-                    height: auto;
-                }
-            }
+    html {
+        margin: 0;
+        padding: 0;
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        background-color: black;
+        overflow-x: hidden;
+        background-image: url(qomb-01.png);
+        background-size: cover;
+    }
+    /*------------------------------------*\
+  #FONTS
+\*------------------------------------*/
+    
+    @font-face {
+        font-family: MainFont;
+        src: url(Pacifico.ttf);
+        font-weight: bold;
+    }
+    
+    @font-face {
+        font-family: TextFont;
+        src: url(OpenSans-Regular.ttf);
+        font-weight: light;
+    }
+    
+    @font-face {
+        font-family: TitleFont;
+        src: url(Montserrat-Regular.ttf);
+        font-weight: light;
+    }
+    /*------------------------------------*\
+  #TEXT-CONTAINERS
+\*------------------------------------*/
+    
+    .m_c,
+    mc2 {
+        width: 90vw;
+        height: auto;
+    }
+    
+    .mc2 {
+        margin-top: 6vh;
+    }
+    
+    main,
+    .faq {
+        width: 960px;
+        max-width: 100%;
+        margin: 0px auto;
+        height: auto;
+    }
+    /*------------------------------------*\
+  #MAIN-TILE & MAIN-SUBTITLE
+\*------------------------------------*/
+    
+    .main_text {
+        margin-top: -8vh;
+        font-size: 2.8vw;
+        margin-left: 1.2vw;
+        font-family: TextFont;
+        color: rgb(255, 255, 255);
+    }
+    
+    .main_title {
+        font-size: 7.2vw;
+        font-family: MainFont;
+        color: #e3cd22;
+        margin-top: 16vh;
+    }
+    /*------------------------------------*\
+  #FAQ
+\*------------------------------------*/
+    
+    .main_title2 {
+        font-family: TitleFont;
+        color: #e3cd22;
+        margin-top: -2vh;
+    }
+    
+    .main_text2 {
+        margin-top: -2vh;
+        font-family: TextFont;
+        color: rgb(255, 255, 255);
+    }
+    
+    .faq {
+        margin-top: 30vh;
+    }
+    
+    .faq_title {
+        font-size: 6vw;
+        font-family: MainFont;
+        color: #e3cd22;
+        margin-bottom: -4vh;
+    }
+    /*------------------------------------*\
+  #BUTTONS
+\*------------------------------------*/
+    
+    .but {
+        margin-left: 1%;
+        height: auto;
+        width: 139px;
+    }
+    /*---------#SCROLL-BUTTON-------*/
+    
+    .span {
+        display: inline;
+        position: absolute;
+        top: 75vh;
+        left: 50%;
+        width: 24px;
+        height: 24px;
+        border-left: 5px solid gold;
+        border-bottom: 5px solid gold;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        -webkit-animation: sdb05 1.5s infinite;
+        animation: sdb05 1.5s infinite;
+        box-sizing: border-box;
+    }
+    
+    @-webkit-keyframes sdb05 {
+        0% {
+            -webkit-transform: rotate(-45deg) translate(0, 0);
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: rotate(-45deg) translate(-20px, 20px);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes sdb05 {
+        0% {
+            transform: rotate(-45deg) translate(0, 0);
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            transform: rotate(-45deg) translate(-20px, 20px);
+            opacity: 0;
+        }
+    }
+    /*------------------------------------*\
+  #RESPONSIVENESS
+\*------------------------------------*/
+    /*-------#BIG_SCREENS-----------*/
+    
+    @media only screen and (max-width: 1500px) {
+        /*-------#PAGE_SIZE-----------*/
+        main {
+            width: 1200px;
+            max-width: 80%;
+            margin: 0px auto;
+            height: auto;
+        }
+        /*-------#MAIN-TILE & MAIN-SUBTITLE-----------*/
+        .main_text {
+            margin-top: -6vh;
+        }
+        /*-------#BUTTONS-----------*/
+        .but {
+            width: 140px;
+            height: auto;
+        }
+    }
+    /*-------#MEDIUM_SCREENS-----------*/
+    
+    @media only screen and (max-width: 992px) {
+        /*-------#PAGE_SIZE-----------*/
+        main {
+            width: 992px;
+            max-width: 80%;
+            margin: 0px auto;
+            height: auto;
+        }
+        /*-------#MAIN-TILE & MAIN-SUBTITLE-----------*/
+        .main_text {
+            margin-top: -4vh;
+        }
+        /*-------#BUTTONS-----------*/
+        .but {
+            width: 130px;
+            height: auto;
+        }
+        .span {
+            margin-top: -20vh;
+        }
+        /*-------#FAQ-----------*/
+        .faq {
+            margin-top: 20vh;
+        }
+    }
+    
+    @media only screen and (max-width: 768px) {
+        /*-------#PAGE_SIZE-----------*/
+        main {
+            width: 768px;
+            max-width: 70%;
+            margin: 0px auto;
+            height: auto;
+        }
+        /*-------#MAIN-TILE & MAIN-SUBTITLE-----------*/
+        .main_text {
+            margin-top: -2vh;
+        }
+        /*-------#BUTTONS-----------*/
+        .but {
+            width: 110px;
+            height: auto;
+        }
+        /*-------#FAQ-----------*/
+        .main_text2 {
+            margin-top: 4vh;
+            font-size: 4vw;
+        }
+        .faq_title {
+            margin-bottom: 2.5vh;
+        }
+    }
+    /*-------#SMALL-SIZED-SCREENS-----------*/
+    
+    @media only screen and (max-width: 480px) {
+        main {
+            width: 480px;
+            max-width: 70%;
+            margin: 0px auto;
+            height: auto;
+        }
+        /*-------#MAIN-TILE & MAIN-SUBTITLE-----------*/
+        .main_title {
+            font-size: 14vw;
+        }
+        .main_text {
+            font-size: 5.8vw;
+        }
+        /*-------#BUTTONS-----------*/
+        .but {
+            width: 90px;
+            height: auto;
+        }
+        .span {
+            margin-top: -12vh;
+        }
+        /*-------#FAQ-----------*/
+        .main_text2 {
+            margin-top: 2vh;
+        }
+        .faq_title {
+            margin-bottom: 1.5vh;
+            font-size: 10vw;
+        }
+    }
+    
+    @media only screen and (max-width: 320px) {
+        main {
+            width: 320px;
+            max-width: 70%;
+            margin: 0px auto;
+            height: auto;
+        }
+        .but {
+            width: 90px;
+            height: auto;
+        }
+        .rw-sentence span {
+            font-size: 2px;
+        }
+    }
+    /*------------------------------------*\
+  #ROTATING-WORDS
+\*------------------------------------*/
+    
+    .rw-wrapper {
+        width: 80%;
+        position: relative;
+        padding: 10px;
+    }
+    
+    .rw-sentence {
+        margin: 0;
+        text-align: left;
+        font-family: TitleFont;
+    }
+    
+    .rw-sentence span {
+        color: white;
+        font-size: 20px;
+        font-weight: normal;
+    }
+    
+    .rw-words {
+        display: inline;
+        text-indent: 10px;
+    }
+    
+    .rw-words-1 span {
+        position: absolute;
+        margin-top: 0;
+        opacity: 0;
+        overflow: hidden;
+        color: #3dad4a;
+        -webkit-animation: rotateWord 18s linear infinite 0s;
+        -ms-animation: rotateWord 18s linear infinite 0s;
+        animation: rotateWord 18s linear infinite 0s;
+    }
+    
+    .rw-words-1 span:nth-child(2) {
+        -webkit-animation-delay: 3s;
+        -ms-animation-delay: 3s;
+        animation-delay: 3s;
+        color: #d08c1f;
+    }
+    
+    .rw-words-1 span:nth-child(3) {
+        -webkit-animation-delay: 6s;
+        -ms-animation-delay: 6s;
+        animation-delay: 6s;
+        color: #ff063f;
+    }
+    
+    .rw-words-1 span:nth-child(4) {
+        -webkit-animation-delay: 9s;
+        -ms-animation-delay: 9s;
+        animation-delay: 9s;
+        color: #C0C0C0;
+    }
+    
+    .rw-words-1 span:nth-child(5) {
+        -webkit-animation-delay: 12s;
+        -ms-animation-delay: 12s;
+        animation-delay: 12s;
+        color: #197111;
+    }
+    
+    .rw-words-1 span:nth-child(6) {
+        -webkit-animation-delay: 15s;
+        -ms-animation-delay: 15s;
+        animation-delay: 15s;
+        color: #3fabb4;
+    }
+    
+    @-webkit-keyframes rotateWord {
+        0% {
+            opacity: 0;
+        }
+        2% {
+            opacity: 0;
+            -webkit-transform: translateY(-30px);
+        }
+        5% {
+            opacity: 1;
+            -webkit-transform: translateY(0px);
+        }
+        17% {
+            opacity: 1;
+            -webkit-transform: translateY(0px);
+        }
+        20% {
+            opacity: 0;
+            -webkit-transform: translateY(30px);
+        }
+        80% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    
+    @-ms-keyframes rotateWord {
+        0% {
+            opacity: 0;
+        }
+        2% {
+            opacity: 0;
+            -ms-transform: translateY(-30px);
+        }
+        5% {
+            opacity: 1;
+            -ms-transform: translateY(0px);
+        }
+        17% {
+            opacity: 1;
+            -ms-transform: translateY(0px);
+        }
+        20% {
+            opacity: 0;
+            -ms-transform: translateY(30px);
+        }
+        80% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    
+    @keyframes rotateWord {
+        0% {
+            opacity: 0;
+        }
+        2% {
+            opacity: 0;
+            -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+        }
+        5% {
+            opacity: 1;
+            -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+        }
+        17% {
+            opacity: 1;
+            -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+        }
+        20% {
+            opacity: 0;
+            -webkit-transform: translateY(30px);
+            transform: translateY(30px);
+        }
+        80% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
