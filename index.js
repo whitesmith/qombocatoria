@@ -120,6 +120,36 @@ app.get('/slack/bot/test/', function (request, response) {
     });
 })
 
+app.get('/slack/bot/get-players/', function (request, response) {
+    redis.hget("Auth", "bot_access_token", function (error, access_token) {
+        if (access_token == null) {
+            response.status(403).send('Not authenticated'); 
+        }
+        else if (access_token == undefined) {
+            response.sendStatus(500);
+        }
+        else {
+            var url = 'https://slack.com/api/channels.info' +
+                '?token=' + access_token +
+                '&channel=' + (request.query.sendTo || 'C1TPEHDEX'); + //TODO: Qombocatoria
+
+            requester.get(url, function (error, botResponse, body) {
+                if (!error && botResponse.statusCode == 200) {
+                    console.log('Success.');
+                    var channel_info = JSON.parse(body);
+                    members = channel_info.channel.members;
+                    console.log(members);
+                }
+                else {
+                    console.log('Failed request for', error);
+                }
+            })
+
+            response.status(200).send('Requests were sent');       }
+    });
+})
+
+
 app.get('/slack/bot/call-players/', function (request, response) {
     redis.hget("Auth", "bot_access_token", function (error, access_token) {
         if (access_token == null) {
