@@ -131,7 +131,7 @@ app.get('/slack/bot/get-players/', function (request, response) {
         else {
             var url = 'https://slack.com/api/channels.info' +
                 '?token=' + access_token +
-                '&channel=' + (request.query.sendTo || 'C1TPEHDEX'); + //TODO: Qombocatoria
+                '&channel=' + (request.query.sendTo || 'C2F8ZAXL4'); + //TODO: Qombocatoria
 
             requester.get(url, function (error, botResponse, body) {
                 if (!error && botResponse.statusCode == 200) {
@@ -198,43 +198,9 @@ app.get('/slack/bot/call-players/', function (request, response) {
             ]
 
             // #liga-dos-ultimos members :D
-            var members = [
-                "U024Q1S1M",
-                "U024Q2F43",
-                "U024Q2F63",
-                "U024Q2F6F",
-                "U024Q2F7B",
-                "U024Q2F7V",
-                "U024Q2F8D",
-                "U024Q2F8Z",
-                "U024Q2F9K",
-                "U024Q2FA7",
-                "U024Q2FBR",
-                "U024Q2FCF",
-                "U024Q2FFF",
-                "U024Q2FH1",
-                "U024Q2FHR",
-                "U024Q4QBS",
-                "U024QAA7F",
-                "U0266AVE8",
-                "U029GQYCG",
-                "U036D736N",
-                "U039V0KSC",
-                "U03DW219D",
-                "U03QEKVHT",
-                "U076825QQ",
-                "U07LV3189",
-                "U07LW468P",
-                "U07MXLCEN",
-                "U07PH0WD8",
-                "U09NYARK4",
-                "U1DQ792A3",
-                "U1E7P2RTM",
-                "U1KAAKJLA",
-                "U1MHD199A",
-                "U1Q9NUR8D",
-                "U1TS58WG5"
-            ]
+            // var members = [
+            //     "U024Q2F9K"
+            // ]
 
             for (var i = 0; i < members.length; i++) {
                 var member = members[i];
